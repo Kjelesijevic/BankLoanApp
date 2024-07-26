@@ -1,8 +1,11 @@
 package com.sapfioneer.bankloans.mapper;
 
 import com.sapfioneer.bankloans.domain.BankLoan;
+import com.sapfioneer.bankloans.domain.LoanRequest;
+import com.sapfioneer.bankloans.domain.LoanRequestWithProcedureStep;
 import com.sapfioneer.bankloans.domain.ProcedureStep;
 import com.sapfioneer.bankloans.dto.BankLoanDto;
+import com.sapfioneer.bankloans.dto.LoanRequestDto;
 import com.sapfioneer.bankloans.dto.ProcedureStepDto;
 
 import java.util.ArrayList;
@@ -18,6 +21,18 @@ public class BankLoanMapper {
         }
         return BankLoanDto.builder()
                 .name(bankLoan.getName())
+                .procedureSteps(procedureSteps)
+                .build();
+    }
+
+    public static BankLoan toEntity(BankLoanDto bankLoanDto) {
+        List<ProcedureStep> procedureSteps = new ArrayList<>();
+
+        for (ProcedureStepDto psDto : bankLoanDto.getProcedureSteps()) {
+            procedureSteps.add(toEntity(psDto));
+        }
+        return BankLoan.builder()
+                .name(bankLoanDto.getName())
                 .procedureSteps(procedureSteps)
                 .build();
     }
@@ -38,15 +53,22 @@ public class BankLoanMapper {
                 .build();
     }
 
-    public static BankLoan toEntity(BankLoanDto bankLoanDto) {
-        List<ProcedureStep> procedureSteps = new ArrayList<>();
+    public static LoanRequest toEntity(LoanRequestDto loanRequestDto) {
 
-        for (ProcedureStepDto psDto : bankLoanDto.getProcedureSteps()) {
-            procedureSteps.add(toEntity(psDto));
-        }
-        return BankLoan.builder()
-                .name(bankLoanDto.getName())
-                .procedureSteps(procedureSteps)
+        return LoanRequest.builder()
+                .firstName(loanRequestDto.getFirstName())
+                .lastName(loanRequestDto.getLastName())
+                .amount(loanRequestDto.getAmount())
                 .build();
     }
+
+    public static LoanRequestDto map(LoanRequest loanRequest) {
+        return LoanRequestDto.builder()
+                .firstName(loanRequest.getFirstName())
+                .lastName(loanRequest.getLastName())
+                .amount(loanRequest.getAmount())
+                .loanTypeid(loanRequest.getId())
+                .build();
+    }
+
 }

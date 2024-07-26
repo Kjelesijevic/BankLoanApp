@@ -20,7 +20,7 @@ public class BankLoan {
     private Integer id;
     @Column(unique = true, nullable = false)
     private String name;
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)//mapiranje jednog loan-a sa vise steps-eva
+    @OneToMany(cascade = CascadeType.ALL)//mapiranje jednog loan-a sa vise steps-eva
     @JoinColumn(name = "bank_loan_id")
     private List<ProcedureStep> procedureSteps;
 

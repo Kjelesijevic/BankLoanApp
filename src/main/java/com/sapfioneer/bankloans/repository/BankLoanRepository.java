@@ -8,6 +8,8 @@ import java.util.Optional;
 
 @Repository
 public interface BankLoanRepository extends JpaRepository<BankLoan, Integer> {
-    Optional<BankLoan> findByName(String name);
+    BankLoan findBankLoanById(Integer id);
+    BankLoan findByName(String name);
     //JpaRepository sadrzi save, delete, ne mora rucno da se implementiraju
+    void deleteBankLoanByName(String name);
 }

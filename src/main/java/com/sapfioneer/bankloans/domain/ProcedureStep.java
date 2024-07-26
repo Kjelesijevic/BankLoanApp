@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
+@Table(name="procedure_step")
 public class ProcedureStep {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,8 +22,5 @@ public class ProcedureStep {
     private Integer orderNumber;
     @Column(nullable = false)
     private Integer durationDays;
-    //@ManyToOne
-    //@JoinColumn(name = "bank_loan_id")
-    //private BankLoan bankLoan;
 
 }
