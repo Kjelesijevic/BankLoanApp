@@ -17,7 +17,7 @@ import java.util.List;
 public class LoanRequest {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //automatski inkrementuje id, 1, 2, itd.
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(nullable = false)
     private String firstName;
@@ -32,7 +32,7 @@ public class LoanRequest {
     @JoinColumn(name = "bank_loan_id")
     private BankLoan bankLoan;
 
-    @OneToMany(cascade = CascadeType.ALL)//mapiranje jednog loan request-a sa vise steps-eva
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "loan_request_id")
     private List<LoanRequestWithProcedureStep> loanRequestSteps;
 

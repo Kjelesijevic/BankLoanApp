@@ -10,6 +10,6 @@ import java.util.Optional;
 public interface BankLoanRepository extends JpaRepository<BankLoan, Integer> {
     BankLoan findBankLoanById(Integer id);
     BankLoan findByName(String name);
-    //JpaRepository sadrzi save, delete, ne mora rucno da se implementiraju
+
     void deleteBankLoanByName(String name);
 }

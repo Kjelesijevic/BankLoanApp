@@ -16,11 +16,11 @@ import java.util.List;
 @Table(name = "bank_loan")
 public class BankLoan {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //automatski inkrementuje id, 1, 2, itd.
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(unique = true, nullable = false)
     private String name;
-    @OneToMany(cascade = CascadeType.ALL)//mapiranje jednog loan-a sa vise steps-eva
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "bank_loan_id")
     private List<ProcedureStep> procedureSteps;
 

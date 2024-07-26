@@ -25,7 +25,7 @@ public class LoanRequestWithProcedureStep {
     @JoinColumn(name = "procedure_step_id")
     ProcedureStep procedureStep;
 
-    @PrePersist //pre spustanja u bazu, odradi ovu metodu
+    @PrePersist
     private void addStatus(){
         stepStatus = ProcedureStepStatus.Pending;
     }

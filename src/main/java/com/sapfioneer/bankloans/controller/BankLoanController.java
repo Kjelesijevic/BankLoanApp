@@ -9,9 +9,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
-@Slf4j //biblioteka za logovanje, tipa log.info() metoda
-@RestController //anotacija da front gadja API request
-@RequestMapping("bank-loan") // domen/bank-loan/"create"
+@Slf4j
+@RestController
+@RequestMapping("bank-loan")
 @RequiredArgsConstructor
 public class BankLoanController {
 
@@ -34,8 +34,7 @@ public class BankLoanController {
         log.info("request for finding details of bank loan by name: {}", name);
         return bankLoanService.findLoanDetails(name);
     }
-    //Tipovi REST: Post, Get, Put, DeleteMapping; post: insert, create; Get: select; Put: update;
-    //Delete: za brisanje
+
 
     @DeleteMapping (path = "/{name}")
     public void deleteLoan(@PathVariable String name) {

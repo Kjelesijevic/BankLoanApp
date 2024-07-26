@@ -11,8 +11,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class BankLoanDto { //data transfer object - klasa koja predstavlja json koji radi
-    // transfer podataka sa fronta
+public class BankLoanDto {
 
     private String name;
     private List<ProcedureStepDto> procedureSteps;
